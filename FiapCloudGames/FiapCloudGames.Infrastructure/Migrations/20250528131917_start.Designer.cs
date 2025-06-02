@@ -44,7 +44,7 @@ namespace Infrastructure.Migrations
                         .HasMaxLength(400)
                         .HasColumnType("VARCHAR(400)");
 
-                    b.Property<string>("Empresa")
+                    b.Property<string>("Genero")
                         .IsRequired()
                         .HasColumnType("VARCHAR(100)");
 
@@ -236,13 +236,13 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("UsuarioId");
 
-                    b.ToTable("UsuarioJogo", (string)null);
+                    b.ToTable("UsuarioJogoPropriedade", (string)null);
                 });
 
             modelBuilder.Entity("Core.Entity.Jogo", b =>
                 {
                     b.HasOne("Core.Entity.Usuario", "Usuario")
-                        .WithMany("Jogos")
+                        .WithMany("Jogo")
                         .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
@@ -280,7 +280,7 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Core.Entity.Promocao", b =>
                 {
                     b.HasOne("Core.Entity.Usuario", "Usuario")
-                        .WithMany("Promocoes")
+                        .WithMany("Promocao")
                         .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
@@ -330,11 +330,11 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Core.Entity.Usuario", b =>
                 {
-                    b.Navigation("Jogos");
+                    b.Navigation("Jogo");
 
                     b.Navigation("JogosPromocoes");
 
-                    b.Navigation("Promocoes");
+                    b.Navigation("Promocao");
 
                     b.Navigation("UsuarioJogos");
                 });

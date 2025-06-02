@@ -1,4 +1,4 @@
-﻿namespace Core.Input
+﻿namespace FiapCloudGames.Core.DTOs
 {
     public class AtualizarUsuarioDTO
     {

@@ -5,6 +5,6 @@
         string Nome,
         string Descricao,
         decimal Preco,              
-        string? Empresa
+        string? Genero
     );
 }

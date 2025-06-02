@@ -237,7 +237,7 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("FiapCloudGame.Core.Entities.Jogo", b =>
                 {
                     b.HasOne("FiapCloudGame.Core.Entities.Usuario", "Usuario")
-                        .WithMany("Jogos")
+                        .WithMany("Jogo")
                         .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
@@ -275,7 +275,7 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("FiapCloudGame.Core.Entities.Promocao", b =>
                 {
                     b.HasOne("FiapCloudGame.Core.Entities.Usuario", "Usuario")
-                        .WithMany("Promocoes")
+                        .WithMany("Promocao")
                         .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
@@ -325,11 +325,11 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("FiapCloudGame.Core.Entities.Usuario", b =>
                 {
-                    b.Navigation("Jogos");
+                    b.Navigation("Jogo");
 
                     b.Navigation("JogosPromocoes");
 
-                    b.Navigation("Promocoes");
+                    b.Navigation("Promocao");
 
                     b.Navigation("UsuarioJogoPropriedades");
                 });

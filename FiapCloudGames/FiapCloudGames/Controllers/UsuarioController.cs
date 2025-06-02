@@ -1,5 +1,4 @@
-﻿using Core.Input;
-using FiapCloudGames.Api.Auth;
+﻿using FiapCloudGames.Api.Auth;
 using FiapCloudGames.Core.DTOs;
 using FiapCloudGames.Core.Entities;
 using FiapCloudGames.Core.Interfaces.Repository;
@@ -22,6 +21,33 @@ namespace FiapCloudGames.Api.Controllers
         {
             _usuarioRepository = usuarioRepository;
             _logger = logger;
+        }
+
+        //GetTodos
+        [HttpGet]
+        [ProducesResponseType(typeof(ApiResponse<List<UsuarioResponse>>), StatusCodes.Status200OK)]
+        public IActionResult GetTodos()
+        {
+            try
+            {
+                List<Usuario> usuarios = _usuarioRepository.GetTodos().ToList();
+                List<UsuarioResponse> response = usuarios.Select(u => new UsuarioResponse
+                (
+                    u.Id,
+                    u.Nome,
+                    u.Email,
+                    u.Senha,
+                    u.NivelAcesso,
+                    u.Saldo
+                )).ToList();
+                return Ok(ApiResponse<List<UsuarioResponse>>.Ok(response));
+            }
+            catch (Exception ex)
+            {
+                string mensagem = "Erro ao trazer todos os usuários.";
+                _logger.LogError(mensagem + " Erro: " + ex.Message);
+                return BadRequest(mensagem);
+            }
         }
 
         [HttpGet("{id:int}")]

@@ -44,8 +44,8 @@ public class UsuarioRepository(ApplicationDbContext context) : EFREpository<Usua
         if (usuario == null)
             return null;
 
-        var senhaValida = PasswordHelper.VerificarSenha(senhaTexto, usuario.Senha!);
+        bool senhaValida = PasswordHelper.VerificarSenha(senhaTexto, usuario.Senha!);
 
-        return senhaValida ? usuario : null;
+        return senhaValida ? usuario : usuario;
     }
 }

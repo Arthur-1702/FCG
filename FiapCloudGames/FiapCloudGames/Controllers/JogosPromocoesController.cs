@@ -76,7 +76,7 @@ namespace FiapCloudGames.Api.Controllers
 
                 _logger.LogInformation("Promoção adicionada ao jogo. JogoId: {JogoId}, PromocaoId: {PromocaoId}", input.JogoId, input.PromocaoId);
 
-                return NoContent();
+                return Ok("Promoção cadastrada");
             }
             catch (Exception e)
             {

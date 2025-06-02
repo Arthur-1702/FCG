@@ -8,7 +8,7 @@ namespace FiapCloudGames.Infrastructure.Repository.Configurations
     {
         public void Configure(EntityTypeBuilder<Jogo> builder)
         {
-            builder.ToTable("Jogos");
+            builder.ToTable("Jogo");
             builder.HasKey(p => p.Id);
 
             builder.Property(p => p.Id).HasColumnType("INT").UseIdentityColumn();

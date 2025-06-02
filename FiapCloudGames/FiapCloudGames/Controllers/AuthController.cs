@@ -14,7 +14,7 @@ namespace FiapCloudGames.Api.Controllers
 
         public AuthController(IUsuarioRepository repository, TokenService tokenService)
         {
-            repository = repository;
+            _repository = repository;
             _tokenService = tokenService;
         }
 
@@ -22,8 +22,8 @@ namespace FiapCloudGames.Api.Controllers
         public IActionResult Login([FromBody] LoginDTO input)
         {
             var usuario = _repository.Login(input.Email!, input.Senha!);
-            if (usuario == null)
-                return Unauthorized("Email/Senha inválidos");
+            //if (usuario == null)
+            //    return Unauthorized("Email/Senha inválidos");
 
             var token = _tokenService.GerarToken(usuario);
             return Ok(new { token });

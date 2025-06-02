@@ -36,41 +36,6 @@ namespace FiapCloudGames.Tests.Controllers
             };
         }
 
-        //[Fact]
-        //public void Get_DeveRetornarTodosJogos_QuandoSemFiltro()
-        //{
-        //    var jogos = new List<Jogo>
-        //{
-        //    new Jogo { Id = 1, Nome = "FIFA", Genero = "Esporte", Descricao = "Futebol", Preco = 100, DataCriacao = DateTime.Now },
-        //    new Jogo { Id = 2, Nome = "NBA", Genero = "Esporte", Descricao = "Basquete", Preco = 120, DataCriacao = DateTime.Now }
-        //};
-        //    _jogoRepoMock.Setup(r => r.GetTodos()).Returns(jogos);
-
-        //    var resultado = _controller.Get(null) as OkObjectResult;
-
-        //    resultado.Should().NotBeNull();
-        //    var value = resultado!.Value as List<object>;
-        //    value.Should().NotBeNull();
-        //    value!.Count.Should().Be(2);
-        //}
-
-        //[Fact]
-        //public void Get_DeveRetornarJogosFiltrados_QuandoFiltroInformado()
-        //{
-        //    var jogos = new List<Jogo>
-        //{
-        //    new Jogo { Id = 1, Nome = "FIFA", Genero = "Esporte", Descricao = "Futebol", Preco = 100, DataCriacao = DateTime.Now }
-        //};
-        //    _jogoRepoMock.Setup(r => r.GetTodosPorFiltro("FIFA")).Returns(jogos);
-
-        //    var resultado = _controller.Get("FIFA") as OkObjectResult;
-
-        //    resultado.Should().NotBeNull();
-        //    var value = resultado!.Value as List<object>;
-        //    value.Should().NotBeNull();
-        //    value!.Count.Should().Be(1);
-        //}
-
         [Fact]
         public void Get_DeveRetornarBadRequest_EmExcecao()
         {

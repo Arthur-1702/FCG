@@ -151,7 +151,6 @@ namespace FiapCloudGames.Tests.Controllers
         public void Put_DeveRetornarUnauthorized_QuandoNaoAutenticado()
         {
             var input = new AtualizarUsuarioDTO { Id = 1, Nome = "Maria", Senha = "novaSenha" };
-            // Não define usuário logado
 
             var resultado = _controller.Put(input) as ObjectResult;
 
@@ -217,7 +216,6 @@ namespace FiapCloudGames.Tests.Controllers
         public void TransformarEmAdmin_DeveRetornarUnauthorized_QuandoNaoAutenticado()
         {
             var input = new UsuarioAdminDTO { IdUsuario = 1 };
-            // Não define usuário logado
 
             var resultado = _controller.TransformarEmAdmin(input) as ObjectResult;
 

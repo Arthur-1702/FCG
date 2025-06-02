@@ -132,26 +132,6 @@ namespace FiapCloudGames.Tests.Repository
             mockContext.Verify(m => m.SaveChanges(), Times.Once);
         }
 
-        //[Fact]
-        //public void Login_DeveRetornarUsuario_QuandoSenhaValida()
-        //{
-        //    var usuario = new Usuario { Id = 1, Nome = "Pedro", Email = "pedro@email.com", Senha = "hash", NivelAcesso = "User", Saldo = 10 };
-        //    var usuarios = new List<Usuario> { usuario };
-        //    var mockSet = CriarMockDbSet(usuarios);
-        //    var mockContext = new Mock<ApplicationDbContext>();
-        //    mockContext.Setup(c => c.Set<Usuario>()).Returns(mockSet.Object);
-
-        //    // Mock do PasswordHelper.VerificarSenha
-        //    PasswordHelperMocker.MockVerificarSenha(true);
-
-        //    var repo = new UsuarioRepository(mockContext.Object);
-
-        //    var resultado = repo.Login("pedro@email.com", "senha");
-
-        //    resultado.Should().NotBeNull();
-        //    resultado!.Email.Should().Be("pedro@email.com");
-        //}
-
         [Fact]
         public void Login_DeveRetornarNull_QuandoUsuarioNaoExiste()
         {

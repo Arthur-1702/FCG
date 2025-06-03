@@ -26,7 +26,6 @@ Uma API REST para gerenciamento de uma loja de jogos digitais com autenticação
 - 🔍 Consulta de jogos disponíveis (para todos os usuários autenticados)
 
 ## 🛠️ Requisitos Técnicos e Ferramentas Utilizadas
-### **Backend & Infraestrutura**
 - **API RESTful** desenvolvida em **.NET 8**
 - **ORM**: Entity Framework Core para mapeamento de entidades (usuários e jogos)
 - **Banco de Dados**: MSSQL Server com sistema de migrations para versionamento do schema

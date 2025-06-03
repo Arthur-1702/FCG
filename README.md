@@ -38,7 +38,7 @@ Uma API REST para gerenciamento de uma loja de jogos digitais com autenticação
 - **Validações**: Testes de integração para fluxos críticos da aplicação
 
 ## Event Storming
-[Diagrama com fluxo do cadastro de Usuário e Cadastro de Jogos no Miro]
+[Diagrama com fluxo do cadastro de Usuário e Cadastro de Jogos no Miro](https://miro.com/app/board/uXjVI-yGAVU=/)
 
 ## 🚀 Como executar
 ### 🗃️ Configuração do Banco de Dados (Migrations)

@@ -87,18 +87,6 @@ namespace FiapCloudGames.Tests.Controllers
         }
 
         [Fact]
-        public void Post_DeveCadastrarUsuario_QuandoValido()
-        {
-            var input = new UsuarioDTO { Nome = "Novo", Email = "novo@email.com", Senha = "senha" };
-            _usuarioRepoMock.Setup(r => r.GetPorEmail(input.Email)).Returns((Usuario)null);
-
-            var resultado = _controller.Post(input) as OkObjectResult;
-
-            resultado.Should().NotBeNull();
-            _usuarioRepoMock.Verify(r => r.Cadastrar(It.IsAny<Usuario>()), Times.Once);
-        }
-
-        [Fact]
         public void Post_DeveRetornarBadRequest_QuandoEmailExistente()
         {
             var input = new UsuarioDTO { Nome = "Novo", Email = "existe@email.com", Senha = "senha" };

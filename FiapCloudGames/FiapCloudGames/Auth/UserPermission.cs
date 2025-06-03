@@ -1,4 +1,4 @@
-﻿using FiapCloudGames.Core.Entities;
+﻿using FiapCloudGames.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 

@@ -1,7 +1,7 @@
 using FiapCloudGames.Api.Controllers;
-using FiapCloudGames.Core.DTOs;
-using FiapCloudGames.Core.Entities;
-using FiapCloudGames.Core.Interfaces.Repository;
+using FiapCloudGames.Application.DTOs;
+using FiapCloudGames.Domain.Entities;
+using FiapCloudGames.Domain.Interfaces.Repository;
 using FluentAssertions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

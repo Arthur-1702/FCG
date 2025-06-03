@@ -1,11 +1,8 @@
-using System.Collections.Generic;
-using System.Linq;
+using FiapCloudGames.Domain.Entities;
+using FiapCloudGames.Infrastructure.Repository;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
 using Moq;
-using Xunit;
-using FiapCloudGames.Infrastructure.Repository;
-using FiapCloudGames.Core.Entities;
 
 namespace FiapCloudGames.Tests.Repository
 {

@@ -1,7 +1,7 @@
-﻿using FiapCloudGames.Core.DTOs;
-using FiapCloudGames.Core.Interfaces.Repository;
+﻿using FiapCloudGames.Application.DTOs;
 using FiapCloudGames.Api.Auth;
 using Microsoft.AspNetCore.Mvc;
+using FiapCloudGames.Domain.Interfaces.Repository;
 
 namespace FiapCloudGames.Api.Controllers
 {
@@ -22,8 +22,8 @@ namespace FiapCloudGames.Api.Controllers
         public IActionResult Login([FromBody] LoginDTO input)
         {
             var usuario = _repository.Login(input.Email!, input.Senha!);
-            //if (usuario == null)
-            //    return Unauthorized("Email/Senha inválidos");
+            if (usuario == null)
+                return Unauthorized("Email/Senha inválidos");
 
             var token = _tokenService.GerarToken(usuario);
             return Ok(new { token });

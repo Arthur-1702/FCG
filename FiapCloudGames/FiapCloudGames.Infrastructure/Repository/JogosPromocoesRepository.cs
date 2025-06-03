@@ -1,5 +1,5 @@
-﻿using FiapCloudGames.Core.Entities;
-using FiapCloudGames.Core.Interfaces.Repository;
+﻿using FiapCloudGames.Domain.Entities;
+using FiapCloudGames.Domain.Interfaces.Repository;
 using Microsoft.EntityFrameworkCore;
 
 namespace FiapCloudGames.Infrastructure.Repository

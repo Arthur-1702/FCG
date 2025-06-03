@@ -1,9 +1,9 @@
 ﻿using FiapCloudGames.Api.Auth;
-using FiapCloudGames.Core.DTOs;
-using FiapCloudGames.Core.Entities;
-using FiapCloudGames.Core.Interfaces.Repository;
-using FiapCloudGames.Core.Responses;
-using FiapCloudGames.Core.Utils;
+using FiapCloudGames.Application.DTOs;
+using FiapCloudGames.Application.Responses;
+using FiapCloudGames.Application.Utils;
+using FiapCloudGames.Domain.Entities;
+using FiapCloudGames.Domain.Interfaces.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,8 +23,8 @@ namespace FiapCloudGames.Api.Controllers
             _logger = logger;
         }
 
-        //GetTodos
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         [ProducesResponseType(typeof(ApiResponse<List<UsuarioResponse>>), StatusCodes.Status200OK)]
         public IActionResult GetTodos()
         {
@@ -51,6 +51,7 @@ namespace FiapCloudGames.Api.Controllers
         }
 
         [HttpGet("{id:int}")]
+        [Authorize(Roles = "Admin")]
         [ProducesResponseType(typeof(ApiResponse<UsuarioResponse>), StatusCodes.Status200OK)]
         public IActionResult Get([FromRoute] int id)
         {
@@ -82,6 +83,17 @@ namespace FiapCloudGames.Api.Controllers
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(input.Nome) || string.IsNullOrWhiteSpace(input.Email) || string.IsNullOrWhiteSpace(input.Senha))
+                    return BadRequest("Nome, Email e Senha são obrigatórios.");
+
+                // Validação do formato de email
+                if (!RegistroValidator.EmailValido(input.Email))
+                    return BadRequest($"Email \"{input.Email}\" inválido.");
+
+                // Validação do formato de senha
+                if (!RegistroValidator.SenhaValida(input.Senha))
+                    return BadRequest("Senha inválida. Deve conter pelo menos 8 caracteres, uma letra maiúscula, uma letra minúscula, um número e um caractere especial.");
+
                 var usuario = new Usuario
                 {
                     Nome = input.Nome,
@@ -96,7 +108,7 @@ namespace FiapCloudGames.Api.Controllers
                 
                 _usuarioRepository.Cadastrar(usuario);
                 _logger.LogInformation($"Usuário \"{usuario.Nome}\" com email \"{usuario.Email}\" cadastrado com sucesso!");
-                return Ok(ApiResponse<Usuario>.Ok(usuario));
+                return Ok("Usuário "+usuario.Email + " cadastrado com sucesso! Bem-vindo!");
             }
             catch (Exception ex)
             {

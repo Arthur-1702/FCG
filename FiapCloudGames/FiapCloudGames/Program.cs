@@ -1,7 +1,7 @@
 using FiapCloudGames.Api.Auth;
-using FiapCloudGames.Core.Entities;
-using FiapCloudGames.Core.Interfaces.Repository;
-using FiapCloudGames.Core.Utils;
+using FiapCloudGames.Domain.Entities;
+using FiapCloudGames.Application.Utils;
+using FiapCloudGames.Domain.Interfaces.Repository;
 using FiapCloudGames.Infrastructure.Repository;
 using FluentValidation;
 using FluentValidation.AspNetCore;
@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using FiapCloudGames.Api.Middleware;
 using Serilog;
 using Serilog.Sinks.MSSqlServer;
 using System.Collections.ObjectModel;
@@ -137,6 +138,8 @@ builder.Host.UseSerilog((context, services, loggerConfig) =>
 
 var app = builder.Build();
 
+app.UseMiddleware<GlobalExceptionMiddleware>();
+
 #region Migration Setup
 using (var scope = app.Services.CreateScope())
 {
@@ -146,7 +149,7 @@ using (var scope = app.Services.CreateScope())
     var config = scope.ServiceProvider.GetRequiredService<IConfiguration>();
 
     var adminEmail = config["SeedAdmin:Email"];
-    var adminSenha = Encoding.UTF8.GetString(Convert.FromBase64String(config["SeedAdmin:Senha"]!));
+    var adminSenha = config["SeedAdmin:Senha"];
     var adminNome = config["SeedAdmin:Nome"];
 
     if (!dbContext.Usuario.Any(u => u.Email == adminEmail))

@@ -1,5 +1,5 @@
 ﻿using System.Security.Claims;
-using FiapCloudGames.Core.Entities;
+using FiapCloudGames.Domain.Entities;
 
 namespace FiapCloudGames.Api.Auth 
 { 

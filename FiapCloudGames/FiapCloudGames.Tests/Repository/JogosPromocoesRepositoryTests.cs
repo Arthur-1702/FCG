@@ -1,4 +1,4 @@
-using FiapCloudGames.Core.Entities;
+using FiapCloudGames.Domain.Entities;
 using FiapCloudGames.Infrastructure.Repository;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;

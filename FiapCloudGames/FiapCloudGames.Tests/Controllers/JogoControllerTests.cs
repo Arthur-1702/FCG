@@ -1,6 +1,7 @@
 using FiapCloudGames.Api.Controllers;
-using FiapCloudGames.Core.Entities;
-using FiapCloudGames.Core.Interfaces.Repository;
+using FiapCloudGames.Application.DTOs;
+using FiapCloudGames.Domain.Entities;
+using FiapCloudGames.Domain.Interfaces.Repository;
 using FluentAssertions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -72,7 +73,7 @@ namespace FiapCloudGames.Tests.Controllers
         public void Post_DeveCadastrarJogo_QuandoValido()
         {
             DefinirUsuarioComId(10);
-            var input = new FiapCloudGames.Core.DTOs.JogoDTO
+            var input = new JogoDTO
             {
                 Nome = "FIFA",
                 Genero = "Esporte",
@@ -91,7 +92,7 @@ namespace FiapCloudGames.Tests.Controllers
         public void Post_DeveRetornarBadRequest_QuandoJogoJaExiste()
         {
             DefinirUsuarioComId(10);
-            var input = new FiapCloudGames.Core.DTOs.JogoDTO
+            var input = new JogoDTO
             {
                 Nome = "FIFA",
                 Genero = "Esporte",
@@ -109,7 +110,7 @@ namespace FiapCloudGames.Tests.Controllers
         public void Post_DeveRetornarBadRequest_EmExcecao()
         {
             DefinirUsuarioComId(10);
-            var input = new FiapCloudGames.Core.DTOs.JogoDTO
+            var input = new JogoDTO
             {
                 Nome = "FIFA",
                 Genero = "Esporte",
@@ -127,7 +128,7 @@ namespace FiapCloudGames.Tests.Controllers
         public void Put_DeveAtualizarJogo_QuandoValido()
         {
             DefinirUsuarioComId(10);
-            var input = new FiapCloudGames.Core.DTOs.AtualizarJogoDTO
+            var input = new AtualizarJogoDTO
             {
                 Id = 1,
                 Nome = "FIFA",
@@ -148,7 +149,7 @@ namespace FiapCloudGames.Tests.Controllers
         public void Put_DeveRetornarBadRequest_EmExcecao()
         {
             DefinirUsuarioComId(10);
-            var input = new FiapCloudGames.Core.DTOs.AtualizarJogoDTO
+            var input = new AtualizarJogoDTO
             {
                 Id = 1,
                 Nome = "FIFA",

@@ -1,8 +1,8 @@
 ﻿using FiapCloudGames.Api.Auth;
-using FiapCloudGames.Core.DTOs;
-using FiapCloudGames.Core.Entities;
-using FiapCloudGames.Core.Interfaces.Repository;
-using FiapCloudGames.Core.Responses;
+using FiapCloudGames.Application.DTOs;
+using FiapCloudGames.Application.Responses;
+using FiapCloudGames.Domain.Entities;
+using FiapCloudGames.Domain.Interfaces.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

@@ -2,7 +2,9 @@
 
 [![.NET](https://img.shields.io/badge/.NET-8.0-purple)](https://dotnet.microsoft.com/)
 [![Entity Framework Core](https://img.shields.io/badge/EF_Core-8.0-green)](https://learn.microsoft.com/en-us/ef/core/)
-[![MSSQL](https://img.shields.io/badge/MSSQL-Server-blue)](https://swagger.io/)
+[![MSSQL](https://img.shields.io/badge/MSSQL-2022-blue)](https://www.microsoft.com/pt-br/sql-server/sql-server-2022)
+[![xUnit](https://img.shields.io/badge/xUnit-2.9.0-blue)](https://xunit.net/releases/v2/2.9.0)
+
 
 ## Descrição
 Uma API REST para gerenciamento de uma loja de jogos digitais com autenticação e autorização por níveis de acesso.

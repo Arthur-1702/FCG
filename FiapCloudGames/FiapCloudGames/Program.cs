@@ -38,7 +38,7 @@ builder.Services.AddSwaggerGen(c =>
         Scheme = "bearer",
         BearerFormat = "JWT",
         In = ParameterLocation.Header,
-        Description = "Faça o login para receber o Token. (Sem o 'Bearer')"
+        Description = "FaÃ§a o login para receber o Token. (Sem o 'Bearer')"
     });
 
     c.AddSecurityRequirement(new OpenApiSecurityRequirement
@@ -61,7 +61,7 @@ builder.Services.AddSwaggerGen(c =>
 });
 #endregion
 
-var connection = configuration.GetConnectionString("ConnectionString");
+ var connection = configuration.GetConnectionString("ConnectionString");
 
 #region Database
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -106,35 +106,35 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 builder.Services.AddAuthorization();
 #endregion
 
-#region Logging
-var columnOptions = new ColumnOptions
-{
-    Store = new Collection<StandardColumn>
-    {
-        StandardColumn.Id,
-        StandardColumn.Message,
-        StandardColumn.MessageTemplate,
-        StandardColumn.Level,
-        StandardColumn.TimeStamp,
-        StandardColumn.Exception,
-        StandardColumn.Properties
-    }
-};
+// #region Logging
+// var columnOptions = new ColumnOptions
+// {
+//     Store = new Collection<StandardColumn>
+//     {
+//         StandardColumn.Id,
+//         StandardColumn.Message,
+//         StandardColumn.MessageTemplate,
+//         StandardColumn.Level,
+//         StandardColumn.TimeStamp,
+//         StandardColumn.Exception,
+//         StandardColumn.Properties
+//     }
+// };
 
-builder.Host.UseSerilog((context, services, loggerConfig) =>
-{
-    loggerConfig
-        .WriteTo.MSSqlServer(
-            connectionString: context.Configuration.GetConnectionString("ConnectionString"),
-            sinkOptions: new MSSqlServerSinkOptions
-            {
-                TableName = "Logs",
-                AutoCreateSqlTable = false
-            },
-            columnOptions: columnOptions
-        );
-});
-#endregion
+// builder.Host.UseSerilog((context, services, loggerConfig) =>
+// {
+//     loggerConfig
+//         .WriteTo.MSSqlServer(
+//             connectionString: context.Configuration.GetConnectionString("ConnectionString"),
+//             sinkOptions: new MSSqlServerSinkOptions
+//             {
+//                 TableName = "Logs",
+//                 AutoCreateSqlTable = false
+//             },
+//             columnOptions: columnOptions
+//         );
+// });
+// #endregion
 
 var app = builder.Build();
 
@@ -169,13 +169,12 @@ using (var scope = app.Services.CreateScope())
 }
 #endregion
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
 
-app.UseHttpsRedirection();
+app.UseSwagger();
+app.UseSwaggerUI();
+
+
+// app.UseHttpsRedirection();
 
 app.UseAuthentication();
 
